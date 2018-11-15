@@ -4,8 +4,8 @@ Algorithm for the Flow-Shop Sequencing Problem
  by Muhammad NawazE.
  
  This small project contain:
- Class Algorithm - the algorihm itself
- Class SyntaticData - same example as in the article, method to generate others examples.
+ Class Algorithm - the algorihm itself.
+ Class SyntaticData - the example from the article, method to generate others examples.
  
  
  could be found here 
