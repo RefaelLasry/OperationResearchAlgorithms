@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from itertools import permutations
 
 
 class Algorithm(object):
@@ -95,3 +96,23 @@ class Algorithm(object):
         self.total_completion_time = self.order_jobs_in_descending_order_of_total_completion_time()
         self.best_order = self.initiate_the_algorithm(self.total_completion_time.index[0:2].tolist())
         self.find_the_best_order_by_heuristic(self.process_time_df, self.total_completion_time)
+
+    def find_the_optimal_schedule_with_brute_force(self, process_time_df):
+        '''
+        Generate of possible permutations and check ine by one for the optimal solution.
+        :param process_time_df: table with process time of each job with each machine.
+        :return: optimal order
+        '''
+        optimal_order = []
+        jobs_list = process_time_df.index.tolist()
+        perm = list(permutations(jobs_list))
+        c_max = np.infty
+        for current_perm in perm:
+            current_c_max = self.compute_completion_time(list(current_perm))
+            print(current_c_max)
+            if current_c_max <= c_max:
+                c_max = current_c_max
+                optimal_order = current_perm
+                print(c_max)
+        self.best_order = optimal_order
+        return optimal_order
