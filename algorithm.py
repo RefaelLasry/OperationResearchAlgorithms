@@ -115,4 +115,4 @@ class Algorithm(object):
                 optimal_order = current_perm
                 print(c_max)
         self.best_order = optimal_order
-        return optimal_order
+        return optimal_order, c_max
